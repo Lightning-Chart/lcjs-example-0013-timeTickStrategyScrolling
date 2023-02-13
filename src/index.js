@@ -4,22 +4,19 @@
 // Import LightningChartJS
 const lcjs = require('@arction/lcjs')
 
+// Import xydata
+const xydata = require('@arction/xydata')
+
 // Extract required parts from LightningChartJS.
-const {
-    lightningChart,
-    AxisScrollStrategies,
-    AxisTickStrategies,
-    Themes,
-} = lcjs
+const { lightningChart, AxisScrollStrategies, AxisTickStrategies, Themes } = lcjs
 
 // Import data-generators from 'xydata'-library.
-const {
-    createProgressiveTraceGenerator
-} = require('@arction/xydata')
+const { createProgressiveTraceGenerator } = xydata
 
-const chart = lightningChart().ChartXY({
-    // theme: Themes.darkGold
-})
+const chart = lightningChart()
+    .ChartXY({
+        // theme: Themes.darkGold
+    })
     .setTitle('Scrolling TimeTickStrategy example')
     .setPadding({ right: 40 })
 
@@ -30,27 +27,27 @@ const axisX = chart
     // Configure progressive ScrollStrategy.
     .setScrollStrategy(AxisScrollStrategies.progressive)
     // Set view to 1 minute.
-    .setInterval(-1 * 60 * 1000, 0)
+    .setInterval({ start: -1 * 60 * 1000, end: 0, stopAxisAfter: false })
     .setAnimationScroll(false)
 
-const axisY = chart.getDefaultAxisY()
-    .setAnimationScroll(false)
+const axisY = chart.getDefaultAxisY().setAnimationScroll(false)
 
 // Add 3 series for real-time signal monitoring.
 const seriesList = new Array(3).fill(0).map((_, iSeries) =>
-    chart
-        .addLineSeries({
-            dataPattern: {
-                pattern: 'ProgressiveX',
-            },
-        })
+    chart.addLineSeries({
+        dataPattern: {
+            pattern: 'ProgressiveX',
+        },
+    }),
 )
 
-const legend = chart.addLegendBox().add(chart)
+const legend = chart
+    .addLegendBox()
+    .add(chart)
     // Dispose example UI elements automatically if they take too much space. This is to avoid bad UI on mobile / etc. devices.
     .setAutoDispose({
         type: 'max-width',
-        maxWidth: 0.30,
+        maxWidth: 0.3,
     })
 
 // Stream live timestamp data into series.
