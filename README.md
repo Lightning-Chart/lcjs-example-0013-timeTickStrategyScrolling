@@ -72,13 +72,13 @@ Direct developer email support can be purchased through a [Support Plan][4] or b
 © LightningChart Ltd 2009-2022. All rights reserved.
 
 
-[LightningChart]: https://lightningchart.com/lightningchart-js-api-documentation/v4.1.0/functions/lightningChart-1.html
-[Automatic axis scrolling options]: https://lightningchart.com/lightningchart-js-api-documentation/v4.1.0/variables/AxisScrollStrategies.html
-[Automatic tick placement options]: https://lightningchart.com/lightningchart-js-api-documentation/v4.1.0/variables/AxisTickStrategies.html
-[Color factory RGBA]: https://lightningchart.com/lightningchart-js-api-documentation/v4.1.0/functions/ColorRGBA.html
-[Solid fill style]: https://lightningchart.com/lightningchart-js-api-documentation/v4.1.0/classes/SolidFill.html
-[Chart XY]: https://lightningchart.com/lightningchart-js-api-documentation/v4.1.0/classes/ChartXY.html
-[Axis XY]: https://lightningchart.com/lightningchart-js-api-documentation/v4.1.0/classes/Axis.html
-[Line Series XY]: https://lightningchart.com/lightningchart-js-api-documentation/v4.1.0/classes/LineSeries.html
-[Legend Box]: https://lightningchart.com/lightningchart-js-api-documentation/v4.1.0/classes/Chart.html#addLegendBox
+[LightningChart]: https://lightningchart.com/js-charts/api-documentation/v4.2.0/functions/lightningChart-1.html
+[Automatic axis scrolling options]: https://lightningchart.com/js-charts/api-documentation/v4.2.0/variables/AxisScrollStrategies.html
+[Automatic tick placement options]: https://lightningchart.com/js-charts/api-documentation/v4.2.0/variables/AxisTickStrategies.html
+[Color factory RGBA]: https://lightningchart.com/js-charts/api-documentation/v4.2.0/functions/ColorRGBA.html
+[Solid fill style]: https://lightningchart.com/js-charts/api-documentation/v4.2.0/classes/SolidFill.html
+[Chart XY]: https://lightningchart.com/js-charts/api-documentation/v4.2.0/classes/ChartXY.html
+[Axis XY]: https://lightningchart.com/js-charts/api-documentation/v4.2.0/classes/Axis.html
+[Line Series XY]: https://lightningchart.com/js-charts/api-documentation/v4.2.0/classes/LineSeries.html
+[Legend Box]: https://lightningchart.com/js-charts/api-documentation/v4.2.0/classes/Chart.html#addLegendBox
 
