@@ -27,7 +27,7 @@ const axisX = chart
     // Configure progressive ScrollStrategy.
     .setScrollStrategy(AxisScrollStrategies.progressive)
     // Set view to 1 minute.
-    .setInterval({ start: -1 * 60 * 1000, end: 0, stopAxisAfter: false })
+    .setDefaultInterval((state) => ({ end: state.dataMax, start: (state.dataMax ?? 0) - 1 * 60 * 1000, stopAxisAfter: false }))
     .setAnimationScroll(false)
 
 const axisY = chart.getDefaultAxisY().setAnimationScroll(false)
