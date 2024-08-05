@@ -2,10 +2,10 @@
  * LightningChartJS example showcasing the TimeTickStrategy feature with scrolling data and axis.
  */
 // Import LightningChartJS
-const lcjs = require('@arction/lcjs')
+const lcjs = require('@lightningchart/lcjs')
 
 // Import xydata
-const xydata = require('@arction/xydata')
+const xydata = require('@lightningchart/xydata')
 
 // Extract required parts from LightningChartJS.
 const { lightningChart, AxisScrollStrategies, AxisTickStrategies, Themes } = lcjs
