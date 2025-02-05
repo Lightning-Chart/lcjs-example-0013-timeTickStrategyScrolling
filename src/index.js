@@ -8,7 +8,7 @@ const lcjs = require('@lightningchart/lcjs')
 const xydata = require('@lightningchart/xydata')
 
 // Extract required parts from LightningChartJS.
-const { lightningChart, AxisScrollStrategies, AxisTickStrategies, Themes } = lcjs
+const { lightningChart, AxisScrollStrategies, AxisTickStrategies, emptyFill, Themes } = lcjs
 
 // Import data-generators from 'xydata'-library.
 const { createProgressiveTraceGenerator } = xydata
@@ -20,7 +20,6 @@ const chart = lightningChart({
         theme: Themes[new URLSearchParams(window.location.search).get('theme') || 'darkGold'] || undefined,
     })
     .setTitle('Scrolling TimeTickStrategy example')
-    .setPadding({ right: 40 })
 
 const axisX = chart
     .getDefaultAxisX()
@@ -36,11 +35,12 @@ const axisY = chart.getDefaultAxisY().setAnimationScroll(false)
 
 // Add 3 series for real-time signal monitoring.
 const seriesList = new Array(3).fill(0).map((_, iSeries) =>
-    chart.addLineSeries({
-        dataPattern: {
-            pattern: 'ProgressiveX',
-        },
-    }),
+    chart
+        .addPointLineAreaSeries({
+            dataPattern: 'ProgressiveX',
+        })
+        .setAreaFillStyle(emptyFill)
+        .setMaxSampleCount(50_000),
 )
 
 const legend = chart
