@@ -26,7 +26,7 @@ const axisX = chart
     // Enable TimeTickStrategy for X Axis.
     .setTickStrategy(AxisTickStrategies.Time)
     // Configure progressive ScrollStrategy.
-    .setScrollStrategy(AxisScrollStrategies.progressive)
+    .setScrollStrategy(AxisScrollStrategies.scrolling)
     // Set view to 1 minute.
     .setDefaultInterval((state) => ({ end: state.dataMax, start: (state.dataMax ?? 0) - 1 * 60 * 1000, stopAxisAfter: false }))
     .setAnimationScroll(false)
@@ -36,21 +36,10 @@ const axisY = chart.getDefaultAxisY().setAnimationScroll(false)
 // Add 3 series for real-time signal monitoring.
 const seriesList = new Array(3).fill(0).map((_, iSeries) =>
     chart
-        .addPointLineAreaSeries({
-            dataPattern: 'ProgressiveX',
-        })
-        .setAreaFillStyle(emptyFill)
-        .setMaxSampleCount(50_000),
+        .addLineSeries()
+        .setMaxSampleCount(50_000)
+        .setName(`Series ${iSeries + 1}`),
 )
-
-const legend = chart
-    .addLegendBox()
-    .add(chart)
-    // Dispose example UI elements automatically if they take too much space. This is to avoid bad UI on mobile / etc. devices.
-    .setAutoDispose({
-        type: 'max-width',
-        maxWidth: 0.3,
-    })
 
 // Stream live timestamp data into series.
 
@@ -79,7 +68,7 @@ Promise.all(
                     y: seriesData[(dataAmount + i) % seriesData.length].y,
                 })
             }
-            series.add(seriesPoints)
+            series.appendJSON(seriesPoints)
         })
         dataAmount += nDataPoints
         requestAnimationFrame(pushData)
