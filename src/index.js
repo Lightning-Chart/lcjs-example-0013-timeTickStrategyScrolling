@@ -36,7 +36,9 @@ const axisY = chart.getDefaultAxisY().setAnimationScroll(false)
 // Add 3 series for real-time signal monitoring.
 const seriesList = new Array(3).fill(0).map((_, iSeries) =>
     chart
-        .addLineSeries()
+        .addLineSeries(
+            { automaticColorIndex: iSeries * 2 },
+        )
         .setMaxSampleCount(50_000)
         .setName(`Series ${iSeries + 1}`),
 )
